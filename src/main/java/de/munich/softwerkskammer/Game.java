@@ -28,6 +28,14 @@ public class Game {
         return score;
     }
 
+
+    public Integer score(int frameToCalculate) {
+        Integer frameScores[] = new Integer[10];
+
+
+        return frameScores[frameToCalculate];
+    }
+
     private boolean isStrike(int frameIndex) {
         return rolls[frameIndex] == 10;
     }

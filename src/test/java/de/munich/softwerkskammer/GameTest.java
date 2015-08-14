@@ -15,6 +15,12 @@ public class GameTest {
     }
 
     @Test
+    public void calcFrameScoreAfterFirstRoll() {
+        game.roll(1);
+        assertEquals(null, game.score(0));
+    }
+
+    @Test
     public void initialScoreShouldBeZero() {
         assertEquals(0, game.score());
     }
