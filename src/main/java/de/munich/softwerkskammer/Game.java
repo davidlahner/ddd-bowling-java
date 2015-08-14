@@ -30,8 +30,30 @@ public class Game {
 
 
     public Integer score(int frameToCalculate) {
+        int score = 0;
+        int frameIndex = 0;
         Integer frameScores[] = new Integer[10];
 
+        for (int frame = 0; frame < 10; frame++) {
+            if (rolls[frameIndex] == null) break;
+
+            if (isStrike(frameIndex)) {
+                score += 10 + strikeBonus(frameIndex);
+                frameIndex++;
+            } else {
+                if (rolls[frameIndex+1] == null) break;
+
+                if (isSpare(frameIndex)) {
+                    score += 10 + spareBonus(frameIndex);
+                    frameIndex += 2;
+                } else {
+                    score += sumOfBallsInFrame(frameIndex);
+                    frameIndex += 2;
+                }
+            }
+
+            frameScores[frame] = score;
+        }
 
         return frameScores[frameToCalculate];
     }
