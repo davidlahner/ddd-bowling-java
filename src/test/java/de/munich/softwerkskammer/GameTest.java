@@ -58,6 +58,13 @@ public class GameTest {
         assertEquals(null, game.score(2));
     }
 
+    @Test
+    public void calcFrameScoreAfterStrike() {
+        game.roll(10);
+
+        assertEquals(null, game.score(0));
+    }
+
 
     @Test
     public void initialScoreShouldBeZero() {
