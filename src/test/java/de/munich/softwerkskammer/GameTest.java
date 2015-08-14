@@ -29,6 +29,15 @@ public class GameTest {
     }
 
     @Test
+    public void calcFrameScoreAfterSpareNotPossible() {
+        game.roll(7);
+        game.roll(3);
+
+        assertEquals(null, game.score(0));
+    }
+
+
+    @Test
     public void initialScoreShouldBeZero() {
         assertEquals(0, game.score());
     }
