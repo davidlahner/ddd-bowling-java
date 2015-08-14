@@ -1,7 +1,7 @@
 package de.munich.softwerkskammer;
 
 public class Game {
-    private int rolls[] = new int[21];
+    private Integer rolls[] = new Integer[21];
     private int currentRoll = 0;
 
     public void roll(int pins) {
@@ -12,6 +12,8 @@ public class Game {
         int score = 0;
         int frameIndex = 0;
         for (int frame = 0; frame < 10; frame++) {
+            if (rolls[frameIndex] == null) break;
+
             if (isStrike(frameIndex)) {
                 score += 10 + strikeBonus(frameIndex);
                 frameIndex++;
