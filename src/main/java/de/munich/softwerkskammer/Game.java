@@ -38,6 +38,8 @@ public class Game {
             if (rolls[frameIndex] == null) break;
 
             if (isStrike(frameIndex)) {
+                if (rolls[frameIndex+1] == null) break;
+
                 score += 10 + strikeBonus(frameIndex);
                 frameIndex++;
             } else {

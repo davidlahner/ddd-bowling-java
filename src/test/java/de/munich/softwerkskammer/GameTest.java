@@ -35,7 +35,17 @@ public class GameTest {
 
         assertEquals(null, game.score(0));
     }
-    
+
+    @Test
+    public void calcFrameScoreAfterSpareAndStrike() {
+        game.roll(1);
+        game.roll(9);
+        game.roll(10);
+
+        assertEquals(new Integer(20), game.score(0));
+        assertEquals(null, game.score(1));
+    }
+
     @Test
     public void calcFrameScoreAfterSpare() {
         game.roll(7);
