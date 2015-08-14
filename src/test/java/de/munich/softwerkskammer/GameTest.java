@@ -117,6 +117,16 @@ public class GameTest {
     }
 
     @Test
+    public void calcFrameScoreAfterStrikeAndSpare() {
+        game.roll(10);
+        game.roll(1);
+        game.roll(9);
+
+        assertEquals(new Integer(20), game.score(0));
+        assertEquals(null, game.score(1));
+    }
+
+    @Test
     public void calcFrameScoreAfterStrikeAndNotCompletedFrame() {
         game.roll(10);
         game.roll(2);
