@@ -122,4 +122,10 @@ public class GameTest {
         game.roll(5);
     }
 
+    @Test
+    public void roll1GetFrame1() {
+    	game.roll(1);
+    	assertEquals(1, game.score(1));
+    }
+    
 }
