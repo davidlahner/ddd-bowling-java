@@ -5,8 +5,15 @@ public class Game {
 	
 	private int rolls[] = new int[21];
     private int currentRoll = 0;
+    
+    public Game() {
+		super();
+		for(int i=0; i<21;i++) {
+			rolls[i]=NOT_ENOUGH_INFORMATION;
+		}
+	}
 
-    public void roll(int pins) {
+	public void roll(int pins) {
         rolls[currentRoll++] = pins;
     }
 
@@ -19,13 +26,13 @@ public class Game {
         int frameIndex = 0;
 		for (int frame = beginFrame; frame <= endFrame; frame++) {
             if (isStrike(frameIndex)) {
-                score += endFrame + strikeBonus(frameIndex);
+                score += 10 + strikeBonus(frameIndex);
                 frameIndex++;
             } else if (isSpare(frameIndex)) {
-            	if(frameIndex+1 == endFrame && frameIndex != 9) {
+            	if(frameIndex+1 == endFrame && frameIndex != 9 && rolls[frameIndex+2]== NOT_ENOUGH_INFORMATION) {
             		return NOT_ENOUGH_INFORMATION;
             	}
-                score += endFrame + spareBonus(frameIndex);
+                score += 10 + spareBonus(frameIndex);
                 frameIndex += 2;
             } else {
                 score += sumOfBallsInFrame(frameIndex);
@@ -52,7 +59,9 @@ public class Game {
     }
 
     private int sumOfBallsInFrame(int frameIndex) {
-        return rolls[frameIndex] + rolls[frameIndex + 1];
+        int firstRoll = rolls[frameIndex] == NOT_ENOUGH_INFORMATION ? 0 : rolls[frameIndex];
+		int secondRoll = rolls[frameIndex + 1] == NOT_ENOUGH_INFORMATION ? 0 : rolls[frameIndex+1];
+		return firstRoll + secondRoll;
     }
 
 	public String score(int frame) {

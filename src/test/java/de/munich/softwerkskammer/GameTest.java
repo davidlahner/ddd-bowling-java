@@ -141,5 +141,13 @@ public class GameTest {
 		game.roll(3);
 		assertEquals("", game.score(1));
 	}
+	
+	@Test
+	public void roll_spareAndBonus_getFrame1_result() {
+		game.roll(7);
+		game.roll(3);
+		game.roll(2);
+		assertEquals("12", game.score(1));
+	}
 
 }
