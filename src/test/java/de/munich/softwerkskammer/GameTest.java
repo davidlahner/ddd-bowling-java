@@ -149,5 +149,14 @@ public class GameTest {
 		game.roll(2);
 		assertEquals("12", game.score(1));
 	}
+	@Test
+	public void roll_spareAndNextFrame_getFrame1_getFrame2_result() {
+		game.roll(7);
+		game.roll(3);
+		game.roll(2);
+		game.roll(6);
+		assertEquals("12", game.score(1));
+		assertEquals("20", game.score(2));
+	}
 
 }

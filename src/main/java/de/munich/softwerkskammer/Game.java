@@ -65,7 +65,7 @@ public class Game {
     }
 
 	public String score(int frame) {
-		int score = score(frame, frame);
+		int score = score(1, frame);
 		return score == NOT_ENOUGH_INFORMATION ? "" : score+"";
 	}
 
