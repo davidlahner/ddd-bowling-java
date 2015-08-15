@@ -191,7 +191,6 @@ public class GameTest {
 		assertEquals("", game.score(1));
 		assertEquals("", game.score(2));
 	}
-	
 
 	@Test
 	public void roll_strike_strike_normal_frame1_result_frame2And3_empty() {
@@ -201,5 +200,16 @@ public class GameTest {
 		assertEquals("22", game.score(1));
 		assertEquals("", game.score(2));
 		assertEquals("", game.score(3));
+	}
+	
+	@Test
+	public void roll_strike_strike_normal_normal_getFrames_result() {
+		game.roll(10);
+		game.roll(10);
+		game.roll(2);
+		game.roll(7);
+		assertEquals("22", game.score(1));
+		assertEquals("41", game.score(2));
+		assertEquals("50", game.score(3));
 	}
 }
