@@ -26,7 +26,9 @@ public class Game {
         int frameIndex = 0;
 		for (int frame = beginFrame; frame <= endFrame; frame++) {
             if (isStrike(frameIndex)) {
-            	if(frameIndex+1 == endFrame && frameIndex != 9 && rolls[frameIndex+2]== NOT_ENOUGH_INFORMATION) {
+            	if(frameIndex != 9 && 
+            			(frameIndex+1 == endFrame   && rolls[frameIndex+2]== NOT_ENOUGH_INFORMATION ||
+            			frameIndex+2 == endFrame && rolls[frameIndex+3]== NOT_ENOUGH_INFORMATION )) {
             		return NOT_ENOUGH_INFORMATION;
             	}
                 score += 10 + strikeBonus(frameIndex);
@@ -38,6 +40,9 @@ public class Game {
                 score += 10 + spareBonus(frameIndex);
                 frameIndex += 2;
             } else {
+            	if(score == NOT_ENOUGH_INFORMATION) {
+            		return NOT_ENOUGH_INFORMATION;
+            	}
                 score += sumOfBallsInFrame(frameIndex);
                 frameIndex += 2;
             }

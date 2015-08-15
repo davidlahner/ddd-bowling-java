@@ -165,4 +165,13 @@ public class GameTest {
 		game.roll(10);
 		assertEquals("", game.score(1));
 	}
+	
+
+	@Test
+	public void roll_strike_firstRollInFrame2_getFrame1_empty() {
+		game.roll(10);
+		game.roll(2);
+		assertEquals("", game.score(1));
+		assertEquals("", game.score(2));
+	}
 }
