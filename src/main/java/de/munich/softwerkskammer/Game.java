@@ -1,7 +1,9 @@
 package de.munich.softwerkskammer;
 
 public class Game {
-    private int rolls[] = new int[21];
+	private static int NOT_ENOUGH_INFORMATION = -9999;
+	
+	private int rolls[] = new int[21];
     private int currentRoll = 0;
 
     public void roll(int pins) {
@@ -20,6 +22,9 @@ public class Game {
                 score += endFrame + strikeBonus(frameIndex);
                 frameIndex++;
             } else if (isSpare(frameIndex)) {
+            	if(frameIndex+1 == endFrame && frameIndex != 9) {
+            		return NOT_ENOUGH_INFORMATION;
+            	}
                 score += endFrame + spareBonus(frameIndex);
                 frameIndex += 2;
             } else {
@@ -50,8 +55,9 @@ public class Game {
         return rolls[frameIndex] + rolls[frameIndex + 1];
     }
 
-	public int score(int frame) {
-		return score(frame, frame);
+	public String score(int frame) {
+		int score = score(frame, frame);
+		return score == NOT_ENOUGH_INFORMATION ? "" : score+"";
 	}
 
 }
