@@ -26,6 +26,9 @@ public class Game {
         int frameIndex = 0;
 		for (int frame = beginFrame; frame <= endFrame; frame++) {
             if (isStrike(frameIndex)) {
+            	if(frameIndex+1 == endFrame && frameIndex != 9 && rolls[frameIndex+2]== NOT_ENOUGH_INFORMATION) {
+            		return NOT_ENOUGH_INFORMATION;
+            	}
                 score += 10 + strikeBonus(frameIndex);
                 frameIndex++;
             } else if (isSpare(frameIndex)) {
