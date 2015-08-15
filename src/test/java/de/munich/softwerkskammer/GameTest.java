@@ -174,4 +174,13 @@ public class GameTest {
 		assertEquals("", game.score(1));
 		assertEquals("", game.score(2));
 	}
+	
+	@Test
+	public void roll_strike_twoRollsInFrame2_getFrame1_getFrame2_result() {
+		game.roll(10);
+		game.roll(2);
+		game.roll(6);
+		assertEquals("18", game.score(1));
+		assertEquals("26", game.score(2));
+	}
 }
