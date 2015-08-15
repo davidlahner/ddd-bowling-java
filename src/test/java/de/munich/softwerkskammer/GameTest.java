@@ -128,4 +128,13 @@ public class GameTest {
     	assertEquals(1, game.score(1));
     }
     
+
+
+    @Test
+    public void roll1_4_getFrame1() {
+    	game.roll(1);
+    	game.roll(4);
+    	assertEquals(5, game.score(1));
+    }
+    
 }
