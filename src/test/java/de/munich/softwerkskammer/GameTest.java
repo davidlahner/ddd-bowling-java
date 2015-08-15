@@ -183,4 +183,12 @@ public class GameTest {
 		assertEquals("18", game.score(1));
 		assertEquals("26", game.score(2));
 	}
+	
+	@Test
+	public void roll_strike_strike_empty() {
+		game.roll(10);
+		game.roll(10);
+		assertEquals("", game.score(1));
+		assertEquals("", game.score(2));
+	}
 }
