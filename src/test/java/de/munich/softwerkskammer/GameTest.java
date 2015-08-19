@@ -17,7 +17,16 @@ public class GameTest {
     @Test
     public void calcFrameScoreAfterFirstRoll() {
         game.roll(1);
-        assertEquals(null, game.score(0));
+        assertEquals(new Integer(1), game.score(0));
+    }
+
+    @Test
+    public void calcFrameScoreInSecondFrameAfterFirstRoll() {
+        game.roll(1);
+        game.roll(1);
+        game.roll(1);
+        assertEquals(new Integer(2), game.score(0));
+        assertEquals(new Integer(3), game.score(1));
     }
 
     @Test

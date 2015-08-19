@@ -43,9 +43,9 @@ public class Game {
                 score += 10 + strikeBonus(frameIndex);
                 frameIndex++;
             } else {
-                if (rolls[frameIndex+1] == null) break;
-
-                if (isSpare(frameIndex)) {
+                if (rolls[frameIndex+1] == null) {
+                    score += rolls[frameIndex];
+                } else if (isSpare(frameIndex)) {
                     if (rolls[frameIndex+2] == null) break;
 
                     score += 10 + spareBonus(frameIndex);
