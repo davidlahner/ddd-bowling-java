@@ -20,6 +20,10 @@ public class Rolls {
 		return rolls[firstRollOfFramePosition + 2];
 	}
 
+	public int rollAtPosition(int position) {
+		return rolls[position];
+	}
+
 	private boolean rollAtPositionExists(int rollPosition) {
 		return currentRoll - 1 >= rollPosition;
 	}

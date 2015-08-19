@@ -20,7 +20,7 @@ public class Game {
 		int score = 0;
 		int frameIndex = 0;
 		for (int frame = 0; frame < untilFrame; frame++) {
-			Frame currentFrame = new Frame(rolls, rolls.rolls, frameIndex);
+			Frame currentFrame = new Frame(rolls, frameIndex);
 			if (currentFrame.isStrike()) {
 				score += 10 + rolls.strikeBonus(frameIndex);
 				frameIndex++;

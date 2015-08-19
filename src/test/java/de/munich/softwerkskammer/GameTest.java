@@ -14,6 +14,35 @@ public class GameTest {
 		game = new Game();
 	}
 
+	@Test
+	public void rollingSpareAndNextRollsShouldReturnSpareWithBonusPlusNextFrameScore() {
+		// Arrange
+		game.roll(7);
+		game.roll(3);
+		game.roll(2);
+		game.roll(6);
+
+		// Act
+		int score = game.score(2);
+
+		// Assert
+		assertEquals(20, score);
+	}
+
+	@Test
+	public void rollingSpareAndNextRollShouldReturnSpareWithBonus() {
+		// Arrange
+		game.roll(7);
+		game.roll(3);
+		game.roll(2);
+
+		// Act
+		int score = game.score(1);
+
+		// Assert
+		assertEquals(12, score);
+	}
+
 	@Test(expected = UnknownBonusException.class)
 	public void rollingSpareWithoutBonusRollsShouldReturnUnknownResult() {
 		// Arrange
