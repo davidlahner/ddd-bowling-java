@@ -14,6 +14,45 @@ public class GameTest {
 	}
 
 	@Test
+	public void rollingTwoStrikesAndTwoNormalRollsShouldAllowScoreCalculationForAllFrames() {
+		// Arrange
+		game.roll(10);
+		game.roll(10);
+		game.roll(2);
+		game.roll(7);
+
+		// Act / Assert
+		assertEquals(22, game.score(1));
+		assertEquals(41, game.score(2));
+		assertEquals(50, game.score(3));
+	}
+
+	@Test(expected = UnknownBonusException.class)
+	public void rollingTwoStrikesAndNormalRollShouldReturnUnknownScoreForSecondFrame() {
+		// Arrange
+		game.roll(10);
+		game.roll(10);
+		game.roll(2);
+
+		// Act / Assert
+		game.score(2);
+	}
+
+	@Test
+	public void rollingTwoStrikesAndNormalRollShouldAllowScoreCalculationForFirstFrame() {
+		// Arrange
+		game.roll(10);
+		game.roll(10);
+		game.roll(2);
+
+		// Act
+		int score = game.score(1);
+
+		// Assert
+		assertEquals(22, score);
+	}
+
+	@Test
 	public void rollingStrikeWithBothBonusRollsShouldReturnStrikeWithBonusPlusRolls() {
 		// Arrange
 		game.roll(10);
