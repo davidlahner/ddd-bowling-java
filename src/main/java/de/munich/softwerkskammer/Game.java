@@ -21,6 +21,7 @@ public class Game {
 		int score = 0;
 		int frameIndex = 0;
 		for (int frame = 0; frame < untilFrame; frame++) {
+			Frame currentFrame = new Frame(rolls, frameIndex);
 			if (isStrike(frameIndex)) {
 				score += 10 + strikeBonus(frameIndex);
 				frameIndex++;
