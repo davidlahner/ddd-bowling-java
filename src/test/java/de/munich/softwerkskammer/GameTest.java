@@ -14,6 +14,16 @@ public class GameTest {
 	}
 
 	@Test(expected = UnknownBonusException.class)
+	public void rollingStrikeWithOnlyOneBonusRollShouldReturnUnknownResult() {
+		// Arrange
+		game.roll(10);
+		game.roll(2);
+
+		// Act / Assert
+		game.score(1);
+	}
+
+	@Test(expected = UnknownBonusException.class)
 	public void rollingStrikeWithoutBonusRollsShouldReturnUnknownResult() {
 		// Arrange
 		game.roll(10);
