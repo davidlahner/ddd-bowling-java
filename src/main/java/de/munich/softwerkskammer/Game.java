@@ -2,12 +2,10 @@ package de.munich.softwerkskammer;
 
 public class Game {
 	private static final int NUMBER_OF_FRAMES = 10;
-	private int[] rolls;
 	private Rolls theRolls;
 
 	public Game() {
-		rolls = new int[21];
-		theRolls = new Rolls(rolls, 0);
+		theRolls = new Rolls();
 	}
 
 	public void roll(int pins) {
