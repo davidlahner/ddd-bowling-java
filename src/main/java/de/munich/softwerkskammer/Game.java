@@ -2,11 +2,17 @@ package de.munich.softwerkskammer;
 
 public class Game {
 	private static final int NUMBER_OF_FRAMES = 10;
-	private int rolls[] = new int[21];
+	private int[] rolls;
+	private Rolls theRolls;
 	private int currentRoll = 0;
 
+	public Game() {
+		rolls = new int[21];
+		theRolls = new Rolls(rolls, currentRoll);
+	}
+
 	public void roll(int pins) {
-		rolls[currentRoll++] = pins;
+		theRolls.rolls[theRolls.currentRoll++] = pins;
 	}
 
 	public int score(int frame) {
@@ -21,7 +27,7 @@ public class Game {
 		int score = 0;
 		int frameIndex = 0;
 		for (int frame = 0; frame < untilFrame; frame++) {
-			Frame currentFrame = new Frame(rolls, frameIndex);
+			Frame currentFrame = new Frame(theRolls.rolls, frameIndex);
 			if (currentFrame.isStrike()) {
 				score += 10 + strikeBonus(frameIndex);
 				frameIndex++;
@@ -37,14 +43,14 @@ public class Game {
 	}
 
 	private int strikeBonus(int frameIndex) {
-		return rolls[frameIndex + 1] + rolls[frameIndex + 2];
+		return theRolls.rolls[frameIndex + 1] + theRolls.rolls[frameIndex + 2];
 	}
 
 	private int spareBonus(int frameIndex) {
-		return rolls[frameIndex + 2];
+		return theRolls.rolls[frameIndex + 2];
 	}
 
 	private int sumOfBallsInFrame(int frameIndex) {
-		return rolls[frameIndex] + rolls[frameIndex + 1];
+		return theRolls.rolls[frameIndex] + theRolls.rolls[frameIndex + 1];
 	}
 }
