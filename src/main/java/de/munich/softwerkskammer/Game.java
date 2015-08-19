@@ -25,7 +25,7 @@ public class Game {
 			if (isStrike(frameIndex)) {
 				score += 10 + strikeBonus(frameIndex);
 				frameIndex++;
-			} else if (isSpare(frameIndex)) {
+			} else if (isSpare(frameIndex, currentFrame)) {
 				score += 10 + spareBonus(frameIndex);
 				frameIndex += 2;
 			} else {
@@ -40,8 +40,9 @@ public class Game {
 		return rolls[frameIndex] == 10;
 	}
 
-	private boolean isSpare(int frameIndex) {
-		return rolls[frameIndex] + rolls[frameIndex + 1] == 10;
+	private boolean isSpare(int frameIndex, Frame currentFrame) {
+		return currentFrame.rolls[currentFrame.firstRollOfFramePosition]
+				+ currentFrame.rolls[currentFrame.firstRollOfFramePosition + 1] == 10;
 	}
 
 	private int strikeBonus(int frameIndex) {
