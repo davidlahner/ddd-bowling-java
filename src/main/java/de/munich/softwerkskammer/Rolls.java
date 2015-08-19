@@ -14,7 +14,14 @@ public class Rolls {
 	}
 
 	public int spareBonus(int firstRollOfFramePosition) {
+		if (!rollAtPositionExists(firstRollOfFramePosition + 2)) {
+			throw new UnknownBonusException();
+		}
 		return rolls[firstRollOfFramePosition + 2];
+	}
+
+	private boolean rollAtPositionExists(int rollPosition) {
+		return currentRoll - 1 >= rollPosition;
 	}
 
 	public int sumOfBallsInFrame(int firstRollOfFramePosition) {
