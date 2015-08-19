@@ -13,6 +13,20 @@ public class GameTest {
 		game = new Game();
 	}
 
+	@Test
+	public void rollingStrikeWithBothBonusRollsShouldReturnStrikeWithBonusPlusRolls() {
+		// Arrange
+		game.roll(10);
+		game.roll(2);
+		game.roll(6);
+
+		// Act
+		int score = game.score(2);
+
+		// Assert
+		assertEquals(26, score);
+	}
+
 	@Test(expected = UnknownBonusException.class)
 	public void rollingStrikeWithOnlyOneBonusRollShouldReturnUnknownResult() {
 		// Arrange
