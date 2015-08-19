@@ -8,4 +8,8 @@ public class Rolls {
 		this.rolls = rolls;
 		this.currentRoll = currentRoll;
 	}
+
+	public void addRoll(int pins) {
+		rolls[currentRoll++] = pins;
+	}
 }

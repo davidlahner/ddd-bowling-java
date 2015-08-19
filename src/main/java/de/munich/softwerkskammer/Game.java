@@ -4,15 +4,14 @@ public class Game {
 	private static final int NUMBER_OF_FRAMES = 10;
 	private int[] rolls;
 	private Rolls theRolls;
-	private int currentRoll = 0;
 
 	public Game() {
 		rolls = new int[21];
-		theRolls = new Rolls(rolls, currentRoll);
+		theRolls = new Rolls(rolls, 0);
 	}
 
 	public void roll(int pins) {
-		theRolls.rolls[theRolls.currentRoll++] = pins;
+		theRolls.addRoll(pins);
 	}
 
 	public int score(int frame) {
