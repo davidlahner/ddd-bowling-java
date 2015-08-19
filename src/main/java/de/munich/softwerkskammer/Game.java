@@ -22,7 +22,7 @@ public class Game {
 		int frameIndex = 0;
 		for (int frame = 0; frame < untilFrame; frame++) {
 			Frame currentFrame = new Frame(rolls, frameIndex);
-			if (isStrike(frameIndex)) {
+			if (currentFrame.isStrike()) {
 				score += 10 + strikeBonus(frameIndex);
 				frameIndex++;
 			} else if (currentFrame.isSpare()) {
@@ -34,10 +34,6 @@ public class Game {
 			}
 		}
 		return score;
-	}
-
-	private boolean isStrike(int frameIndex) {
-		return rolls[frameIndex] == 10;
 	}
 
 	private int strikeBonus(int frameIndex) {

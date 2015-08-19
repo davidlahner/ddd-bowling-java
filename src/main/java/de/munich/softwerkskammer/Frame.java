@@ -13,4 +13,8 @@ public class Frame {
 		return rolls[firstRollOfFramePosition]
 				+ rolls[firstRollOfFramePosition + 1] == 10;
 	}
+
+	public boolean isStrike() {
+		return rolls[firstRollOfFramePosition] == 10;
+	}
 }
