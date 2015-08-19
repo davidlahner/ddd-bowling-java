@@ -6,12 +6,20 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class GameTest {
-
 	private Game game;
 
 	@Before
 	public void beforeTest() {
 		game = new Game();
+	}
+
+	@Test(expected = UnknownBonusException.class)
+	public void rollingStrikeWithoutBonusRollsShouldReturnUnknownResult() {
+		// Arrange
+		game.roll(10);
+
+		// Act / Assert
+		game.score(1);
 	}
 
 	@Test

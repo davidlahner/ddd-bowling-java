@@ -9,15 +9,27 @@ public class Rolls {
 	}
 
 	public int strikeBonus(int firstRollOfFramePosition) {
+		if (!strikeBonusRollsExist(firstRollOfFramePosition)) {
+			throw new UnknownBonusException();
+		}
 		return rolls[firstRollOfFramePosition + 1]
 				+ rolls[firstRollOfFramePosition + 2];
 	}
 
+	private boolean strikeBonusRollsExist(int firstRollOfFramePosition) {
+		return rollAtPositionExists(firstRollOfFramePosition + 1)
+				&& rollAtPositionExists(firstRollOfFramePosition + 2);
+	}
+
 	public int spareBonus(int firstRollOfFramePosition) {
-		if (!rollAtPositionExists(firstRollOfFramePosition + 2)) {
+		if (!spareBonusRollExists(firstRollOfFramePosition)) {
 			throw new UnknownBonusException();
 		}
 		return rolls[firstRollOfFramePosition + 2];
+	}
+
+	private boolean spareBonusRollExists(int firstRollOfFramePosition) {
+		return rollAtPositionExists(firstRollOfFramePosition + 2);
 	}
 
 	public int rollAtPosition(int position) {
